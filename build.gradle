@@ -1,26 +1,20 @@
 buildscript {
-	ext {
-		springBootVersion = '1.5.2.RELEASE'
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
+	ext { springBootVersion = '1.5.2.RELEASE' }
+	repositories { mavenCentral() }
+	dependencies { classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") }
 }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 
+
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
+
 repositories {
-	maven {
-		url "https://nexus.itasgmbh.de/repository/itas/"
-	}
+	maven { url "https://nexus.itasgmbh.de/repository/itas/" }
 
 	mavenCentral()
 }
@@ -30,3 +24,16 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
+
+task downloadLicense {
+	doLast {
+		println "Downloading license file from $licenseUrl"
+		def destination = new File('src/main/resources/static/LICENSE')
+		new URL(licenseUrl).withInputStream{ i -> destination.withOutputStream{ it << i }}
+	}
+}
+
+// Task 1: Run task downloadLicense before task jar
+// Task 2: Define property "enable.license.download=true". Skip task downloadLicense if this property not set
+// Task 3: Implement task deleteLicense. Run it before task "clean"
+
