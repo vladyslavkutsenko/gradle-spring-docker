@@ -1,0 +1,3 @@
+rootProject.name = 'gradle-spring-docker'
+include 'gateway'
+
