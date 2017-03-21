@@ -25,15 +25,23 @@ dependencies {
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
+def destination = new File('src/main/resources/static/LICENSE')
+
 task downloadLicense {
 	doLast {
 		println "Downloading license file from $licenseUrl"
-		def destination = new File('src/main/resources/static/LICENSE')
 		new URL(licenseUrl).withInputStream{ i -> destination.withOutputStream{ it << i }}
 	}
 }
 
 // Task 1: Run task downloadLicense before task jar
-// Task 2: Define property "enable.license.download=true". Skip task downloadLicense if this property not set
+jar.dependsOn downloadLicense
+// Task 2: Define property "enableLicenseDownload". Skip task downloadLicense if this property is not set
+downloadLicense.onlyIf { project.hasProperty('enableLicenseDownload')}
 // Task 3: Implement task deleteLicense. Run it before task "clean"
+task deleteLicense {
+	println "Deleting $destination"
+	if  (destination.exists()) destination.delete()
+}
+clean.dependsOn deleteLicense
 
