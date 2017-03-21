@@ -1,4 +1,3 @@
-apply plugin: 'eclipse'
 
 task buildDockerImage {t->
 	exec {

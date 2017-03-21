@@ -1,0 +1,17 @@
+buildscript {
+	ext { springBootVersion = '1.5.2.RELEASE' }
+	repositories { mavenCentral() }
+	dependencies { classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") }
+}
+
+subprojects {
+	apply plugin: 'eclipse'
+		apply plugin: 'idea'
+			
+	repositories {
+		maven { url "https://nexus.itasgmbh.de/repository/itas/" }
+
+		mavenCentral()
+	}
+
+}
