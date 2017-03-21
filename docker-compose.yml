@@ -1,0 +1,15 @@
+version: '2'
+services:
+
+  service:
+    image: chuck-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - database
+    environment:
+      - MYSQL_URL=jdbc:mysql://database:3306/chuck?user=chuck&password=norris
+      - SERVICE_VERSION=2
+
+  database:
+    image: chuckdb

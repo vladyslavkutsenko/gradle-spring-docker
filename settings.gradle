@@ -1,3 +1,5 @@
 rootProject.name = 'gradle-spring-docker'
 include 'gateway'
+include 'database'
+include 'chuck-service'
 
