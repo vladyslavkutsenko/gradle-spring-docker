@@ -1,4 +1,3 @@
-
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 
@@ -18,8 +17,10 @@ dependencies {
 }
 
 
-task buildDockerImage(dependsOn: bootRepackage) {t->
-	exec {
-		commandLine "docker","build","-t","chuck-service","."
+task buildDockerImage(dependsOn: build) {t->
+	doLast {
+		exec {
+			commandLine "docker","build","-t","chucknorris-service","."
+		}
 	}
 }

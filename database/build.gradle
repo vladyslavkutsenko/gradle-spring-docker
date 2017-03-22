@@ -1,6 +1,0 @@
-
-task buildDockerImage {t->
-	exec {
-		commandLine "docker","build","-t","chuckdb","."
-	}
-}

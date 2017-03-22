@@ -28,7 +28,7 @@ jar.dependsOn downloadLicense
 // Task 2: Define property "enableLicenseDownload". Skip task downloadLicense if this property is not set
 downloadLicense.onlyIf { project.hasProperty('enableLicenseDownload')}
 // Task 3: Implement task deleteLicense. Run it before task "clean"
-task deleteLicense {
+task deleteLicense {	
 	println "Deleting $destination"
 	if  (destination.exists()) destination.delete()
 }
