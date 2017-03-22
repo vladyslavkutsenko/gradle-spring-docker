@@ -6,12 +6,12 @@ buildscript {
 
 subprojects {
 	apply plugin: 'eclipse'
-		apply plugin: 'idea'
-			
+	apply plugin: 'idea'
+
 	repositories {
 		maven { url "https://nexus.itasgmbh.de/repository/itas/" }
 
 		mavenCentral()
 	}
-
+	// task: implement task buildDockerImage in the parent script
 }
