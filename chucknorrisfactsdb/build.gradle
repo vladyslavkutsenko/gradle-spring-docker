@@ -1,8 +1,0 @@
-
-task buildDockerImage {t->
-	doLast {
-		exec {
-			commandLine "docker","build","-t","$t.project.name","."
-		}
-	}
-}

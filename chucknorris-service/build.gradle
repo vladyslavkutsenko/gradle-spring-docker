@@ -17,10 +17,3 @@ dependencies {
 }
 
 
-task buildDockerImage(dependsOn: build) {t->
-	doLast {
-		exec {
-			commandLine "docker","build","-t","chucknorris-service","."
-		}
-	}
-}

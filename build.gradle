@@ -1,17 +1,40 @@
 buildscript {
-	ext { springBootVersion = '1.5.2.RELEASE' }
-	repositories { mavenCentral() }
-	dependencies { classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") }
+	ext {
+		springBootVersion = '1.5.2.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
 }
 
 subprojects {
+	subproject->
 	apply plugin: 'eclipse'
 	apply plugin: 'idea'
 
 	repositories {
-		maven { url "https://nexus.itasgmbh.de/repository/itas/" }
+		maven {
+			url "https://nexus.itasgmbh.de/repository/itas/"
+		}
 
 		mavenCentral()
 	}
 	// task: implement task buildDockerImage in the parent script
+	task buildDockerImage {
+		doLast {
+			if (file("Dockerfile").exists())
+			exec {
+				commandLine "docker","build","-t","$subproject.name","."
+			}
+		}
+	}
+
+
+}
+
+project('chucknorris-service') {
+	buildDockerImage.dependsOn 'build' 
 }
