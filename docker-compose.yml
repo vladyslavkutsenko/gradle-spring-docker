@@ -1,10 +1,8 @@
 version: '2'
 services:
 
-  service:
+  chucknorris-service:
     image: chucknorris-service
-    ports:
-      - "8080:8080"
     depends_on:
       - database
     environment:
@@ -13,3 +11,9 @@ services:
 
   database:
     image: chucknorrisfactsdb
+  gateway:
+    image: gateway
+    links:
+      - chucknorris-service
+    ports:
+      - "8080:8080"
