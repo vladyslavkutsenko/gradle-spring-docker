@@ -48,7 +48,7 @@ public class ChuckApplication extends WebMvcConfigurerAdapter {
     }
 
     @Autowired
-    JdbcTemplate template;
+					JdbcTemplate template;
 
     @RequestMapping("/")
     public Map<String, String> randomJoke() {
