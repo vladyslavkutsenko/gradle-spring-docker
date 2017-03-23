@@ -5,9 +5,6 @@ services:
     image: chucknorris-service
     depends_on:
       - database
-    environment:
-      - MYSQL_URL=jdbc:mysql://database:3306/chuck?user=chuck&password=norris
-      - SERVICE_VERSION=2
 
   database:
     image: chucknorrisfactsdb
