@@ -6,6 +6,7 @@ package de.itasgmbh.workshop.service;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -16,6 +17,8 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnit44Runner;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.web.client.RestTemplate;
+
+import de.itasgmbh.workshop.model.Joke;
 
 /**
  * @author vkutsenko
@@ -33,13 +36,16 @@ public class ChuckNorrisServiceTests {
 	public void setup() {
 		chuckNorrisService = new ChuckNorrisService();
 		chuckNorrisService.restTemplate = mockRestTemplate;
-		when(mockRestTemplate.getForObject(anyString(), any())).thenReturn("Chuck Norris");
+		Joke joke = new Joke();
+		joke.setJoke("Chuck Norris");
+
+		when(mockRestTemplate.getForObject(anyString(), any())).thenReturn(joke);
 	}
 
 	@Test
 	public void testReplaceHeroeString() throws Exception {
 
-		String heroe = chuckNorrisService.replaceHeroe(HEROE);
+		String heroe = chuckNorrisService.replaceHeroe(HEROE).getJoke();
 		assertEquals(HEROE, heroe);
 	}
 

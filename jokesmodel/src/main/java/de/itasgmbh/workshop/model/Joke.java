@@ -46,4 +46,40 @@ public class Joke {
 		return id;
 	}
 
+	@Override
+	public String toString() {
+		return "Joke [id=" + id + ", joke=" + joke + ", language=" + language + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((joke == null) ? 0 : joke.hashCode());
+		result = prime * result + ((language == null) ? 0 : language.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Joke other = (Joke) obj;
+		if (joke == null) {
+			if (other.joke != null)
+				return false;
+		} else if (!joke.equals(other.joke))
+			return false;
+		if (language == null) {
+			if (other.language != null)
+				return false;
+		} else if (!language.equals(other.language))
+			return false;
+		return true;
+	}
+
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import de.itasgmbh.workshop.model.Joke;
 import de.itasgmbh.workshop.service.ChuckNorrisService;
 
 /**
@@ -30,10 +31,8 @@ public class GatewayRestController {
 	ChuckNorrisService chuckNorrisService;
 
 	@RequestMapping(method = RequestMethod.GET, path = "/heroe/{heroe}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<String> replaceHeroe(@PathVariable String heroe) {
+	public ResponseEntity<Joke> replaceHeroe(@PathVariable String heroe) {
 		log.info("Changing heroe to {}", heroe);
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(MediaType.APPLICATION_JSON);
-		return new ResponseEntity<>(chuckNorrisService.replaceHeroe(heroe), headers, HttpStatus.OK);
+		return new ResponseEntity<>(chuckNorrisService.replaceHeroe(heroe), HttpStatus.OK);
 	}
 }

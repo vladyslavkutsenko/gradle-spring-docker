@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import de.itasgmbh.workshop.model.Joke;
+
 /**
  * @author vkutsenko
  *
@@ -21,12 +23,14 @@ public class ChuckNorrisService {
 	@Autowired
 	RestTemplate restTemplate;
 
-	public String replaceHeroe(String newHeroe) {
-		return getChuckNorrisFact().replaceAll("Chuck Norris", newHeroe);
+	public Joke replaceHeroe(String newHeroe) {
+		Joke joke = getChuckNorrisFact();
+		joke.setJoke(joke.getJoke().replaceAll("Chuck Norris", newHeroe));
+		return joke;
 	}
 
-	private String getChuckNorrisFact() {
-		return restTemplate.getForObject(CHUCK_NORRIS_SERVICE_URL, String.class);
+	private Joke getChuckNorrisFact() {
+		return restTemplate.getForObject(CHUCK_NORRIS_SERVICE_URL, Joke.class);
 	}
 
 }
