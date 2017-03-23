@@ -3,9 +3,11 @@
  */
 package de.itasgmbh.workshop.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 /**
@@ -18,8 +20,10 @@ public class Joke {
 
 	@Id
 	@GeneratedValue
-	private Long id;
+	private Integer id;
+	@Column(columnDefinition = "text")
 	private String joke;
+	@Column(name = "lang")
 	private String language;
 
 	public String getJoke() {
@@ -38,7 +42,7 @@ public class Joke {
 		this.language = language;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
