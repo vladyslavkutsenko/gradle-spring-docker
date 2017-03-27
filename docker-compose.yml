@@ -14,3 +14,12 @@ services:
       - chucknorris-service
     ports:
       - "8080:8080"
+  nginx:
+      image: nginx
+      links:
+        - gateway
+      ports:
+        - "80:80"
+      volumes:
+        - "./proxy-devel.conf:/etc/nginx/conf.d/proxy-devel.conf"
+          
