@@ -1,8 +1,9 @@
 # gradle-spring-docker
 
-Examples for a workshop on Gradle, Spring and Docker.
+Some examples on usage of Gradle, Spring and Docker.
 
-The code was strongly inspired by
+
+The DB containing Chuck Norris Facts as well as a corresponding service were derived from 
 
 https://github.com/unterstein/docker-java-sample
 
