@@ -1,12 +1,6 @@
 version: "2.1"
 services:
    chucknorris-service:
-    command:
-       - "java"
-       - "-jar"        
-       - "-Xdebug"
-       - "-Xrunjdwp:server=y,transport=dt_socket,address=0.0.0.0:8000,suspend=n"
-       - "/app.jar"
     ports:
-       - "8000:8000"  
+       - "8090:8080"  
    

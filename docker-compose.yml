@@ -13,8 +13,6 @@ services:
     image: gateway
     links:
       - chucknorris-service
-    ports:
-      - "8080:8080"
   nginx:
       image: nginx
       links:

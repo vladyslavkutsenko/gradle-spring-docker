@@ -17,3 +17,12 @@ dependencies {
 
 
 buildDockerImage.dependsOn build
+
+bootRun {
+	systemProperties = System.properties
+	args = [
+		'--import-data',
+		'--spring.profiles.active=dev',
+		'--service.url=http://localhost:8090/'
+	]
+}
