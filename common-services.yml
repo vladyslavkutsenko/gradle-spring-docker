@@ -1,0 +1,18 @@
+version: '2.1'
+services:
+
+  chucknorris-service:
+    image: chucknorris-service
+
+  database:
+    image: chucknorrisfactsdb
+  gateway:
+    image: gateway
+
+  nginx:
+      image: nginx
+      ports:
+        - "80:80"
+      volumes:
+        - "./proxy-devel.conf:/etc/nginx/conf.d/proxy-devel.conf"
+          
