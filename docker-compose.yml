@@ -1,10 +1,11 @@
-version: '2'
+version: '2.1'
 services:
 
   chucknorris-service:
     image: chucknorris-service
     depends_on:
       - database
+        
 
   database:
     image: chucknorrisfactsdb
