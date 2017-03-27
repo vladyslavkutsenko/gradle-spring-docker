@@ -1,25 +1,25 @@
-version: '2'
+version: "2.1"
 services:
-
-  chucknorris-service:
-    image: chucknorris-service
-    depends_on:
-      - database
-
-  database:
-    image: chucknorrisfactsdb
-  gateway:
-    image: gateway
-    links:
-      - chucknorris-service
-    ports:
-      - "8080:8080"
-  nginx:
-      image: nginx
-      links:
-        - gateway
-      ports:
-        - "80:80"
-      volumes:
-        - "./proxy-devel.conf:/etc/nginx/conf.d/proxy-devel.conf"
-          
+   database:
+         extends:
+               file: common-services.yml
+               service: database
+   chucknorris-service:
+         extends:
+            file: common-services.yml
+            service: chucknorris-service
+         depends_on: 
+            - database
+   gateway:
+      extends:
+         file: common-services.yml
+         service: gateway
+      depends_on: 
+         - chucknorris-service
+   nginx:
+      extends:
+         file: common-services.yml
+         service: nginx
+      depends_on: 
+         - gateway
+                                                
