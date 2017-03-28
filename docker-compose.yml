@@ -10,7 +10,7 @@ services:
     image: chucknorrisfactsdb
   gateway:
     image: gateway
-    links:
+    depends_on:
       - chucknorris-service
     ports:
       - "8080:8080"
