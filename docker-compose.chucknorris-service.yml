@@ -1,0 +1,16 @@
+version: '2.1'
+services:
+  gateway:
+    volumes:
+    - ./resolvedockerhost.sh:/resolvedockerhost.sh
+    command:
+    - /resolvedockerhost.sh
+    - java
+    - -jar
+    - /app.jar
+  
+    environment:
+       - 'SERVICE_URL=http://dockerhost:8080/'  
+  database:
+     ports:
+        - "3306:3306"    

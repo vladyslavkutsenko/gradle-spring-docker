@@ -21,4 +21,12 @@ dependencies {
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
+bootRun {
+	systemProperties = System.properties
+	args =[
+		'--spring.datasource.url=jdbc:mysql://localhost:3306/chuck',
+		'--spring.datasource.serverName=localhost'
+	]
+}
+
 

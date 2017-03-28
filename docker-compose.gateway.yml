@@ -1,0 +1,6 @@
+version: "2.1"
+services:
+   chucknorris-service:
+    ports:
+       - "8090:8080"  
+   

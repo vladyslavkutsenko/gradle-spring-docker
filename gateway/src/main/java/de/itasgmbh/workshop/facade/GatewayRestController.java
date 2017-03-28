@@ -30,7 +30,7 @@ public class GatewayRestController {
 	@Autowired
 	ChuckNorrisService chuckNorrisService;
 
-	@RequestMapping(method = RequestMethod.GET, path = "/heroe/{heroe}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(method = RequestMethod.GET, path = "/heroe/{heroe}", produces = MediaType.APPLICATION_XML_VALUE)
 	public ResponseEntity<Joke> replaceHeroe(@PathVariable String heroe) {
 		log.info("Changing heroe to {}", heroe);
 		return new ResponseEntity<>(chuckNorrisService.replaceHeroe(heroe), HttpStatus.OK);

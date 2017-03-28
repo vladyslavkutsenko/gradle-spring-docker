@@ -9,6 +9,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * @author vkutsenko
@@ -16,14 +21,18 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "jokes")
+@XmlRootElement(name = "chuck-norris-fact")
+@XmlAccessorType(XmlAccessType.NONE)
 public class Joke {
-
+	@XmlAttribute
 	@Id
 	@GeneratedValue
 	private Integer id;
 	@Column(columnDefinition = "text")
+	@XmlElement
 	private String joke;
 	@Column(name = "lang")
+	@XmlAttribute
 	private String language;
 
 	public String getJoke() {
