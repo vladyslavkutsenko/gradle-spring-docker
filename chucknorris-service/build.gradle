@@ -22,3 +22,10 @@ dependencies {
 }
 
 
+
+bootRun {
+	args = [
+		'--spring.datasource.url=jdbc:mysql://localhost:3306/chuck',
+		'--spring.profiles.active=dev'
+	]
+}
