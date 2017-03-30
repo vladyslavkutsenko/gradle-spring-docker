@@ -1,6 +1,5 @@
 version: '2'
 services:
-
   chucknorris-service:
     image: chucknorris-service
     depends_on:
@@ -10,11 +9,11 @@ services:
     image: chucknorrisfactsdb
   gateway:
     image: gateway
-    links:
+    depends_on:
       - chucknorris-service
   nginx:
       image: nginx
-      links:
+      depends_on:
         - gateway
       ports:
         - "80:80"

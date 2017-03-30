@@ -15,24 +15,27 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+
 /**
  * @author vkutsenko
  *
  */
 @Entity
 @Table(name = "jokes")
-@XmlRootElement(name = "chuck-norris-fact")
-@XmlAccessorType(XmlAccessType.NONE)
+@JacksonXmlRootElement(localName = "fact")
 public class Joke {
 	@XmlAttribute
+	@JacksonXmlProperty(isAttribute = true)
 	@Id
 	@GeneratedValue
 	private Integer id;
 	@Column(columnDefinition = "text")
-	@XmlElement
+	@JacksonXmlProperty(isAttribute = false)
 	private String joke;
 	@Column(name = "lang")
-	@XmlAttribute
+	@JacksonXmlProperty(isAttribute = true)
 	private String language;
 
 	public String getJoke() {
