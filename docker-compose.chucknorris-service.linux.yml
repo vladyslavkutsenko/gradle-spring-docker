@@ -8,7 +8,6 @@ services:
          - "./resolvedockerhost.sh:/resolvedockerhost.sh"
       environment:
          - "SERVICE_URL=http://dockerhost:8080/"
-         - "DOCKER_HOST_IP=10.0.75.1"         
       command:
          - /resolvedockerhost.sh
          - java
