@@ -1,0 +1,8 @@
+version: "2.1"
+services:
+   database:
+      ports:
+         - "3306:3306"
+   gateway:
+      environment:
+         - "SERVICE_URL=http://10.0.75.1:8080/"
