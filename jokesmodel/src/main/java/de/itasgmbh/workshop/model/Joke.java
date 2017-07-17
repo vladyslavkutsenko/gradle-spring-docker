@@ -6,8 +6,10 @@ package de.itasgmbh.workshop.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -28,10 +30,11 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 public class Joke {
 	@XmlAttribute
 	@JacksonXmlProperty(isAttribute = true)
+
 	@Id
-	@GeneratedValue
-	private Integer id;
-	@Column(columnDefinition = "text")
+	@SequenceGenerator(name = "jokes_seq", sequenceName = "jokes_seq")
+	private Long id;
+
 	@JacksonXmlProperty(isAttribute = false)
 	private String joke;
 	@Column(name = "lang")
@@ -54,7 +57,7 @@ public class Joke {
 		this.language = language;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 

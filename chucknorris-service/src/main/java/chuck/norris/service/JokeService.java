@@ -30,7 +30,7 @@ public class JokeService {
 	@Transactional
 	public Joke getNextJoke() {
 		int count = (int) jokeRepository.count();
-		int idCandidate = random.nextInt(count - 1) + 1;
+		long idCandidate = (long) random.nextInt(count - 1) + 1;
 		for (int i = 0; i < 5; i++) {
 			Joke joke = jokeRepository.findOne(idCandidate);
 			if (joke != null) {

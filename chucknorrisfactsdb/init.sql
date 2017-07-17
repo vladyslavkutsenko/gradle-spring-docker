@@ -4,6 +4,7 @@ CREATE TABLE jokes (
   lang varchar(2) DEFAULT 'en',
   PRIMARY KEY (id)
 );
+create sequence jokes_seq start 4003;
 
 INSERT INTO jokes VALUES 
 (0,'Giraffes are born or created when Chuck Norris uppercuts a Horse!','en'),

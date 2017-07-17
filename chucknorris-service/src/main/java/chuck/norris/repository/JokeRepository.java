@@ -11,6 +11,6 @@ import de.itasgmbh.workshop.model.Joke;
  * @author vkutsenko
  *
  */
-public interface JokeRepository extends JpaRepository<Joke, Integer> {
+public interface JokeRepository extends JpaRepository<Joke, Long> {
 
 }
