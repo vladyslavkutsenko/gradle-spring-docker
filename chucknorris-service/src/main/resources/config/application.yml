@@ -1,16 +1,15 @@
 spring:
     datasource:
-        dataSourceClassName: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
-        url: jdbc:mysql://database:3306/chuck
+        url: jdbc:postgresql://database:5432/chuck
         databaseName: chuck
         serverName: chucknorrisfactsdb
         username: chuck
-        password: norris
+        password: chuck
         
 
     jpa:
-        database-platform: org.hibernate.dialect.MySQLInnoDBDialect
-        database: MYSQL
+        database-platform: org.hibernate.dialect.PostgreSQL94Dialect
+        database: POSTGRESQL
         openInView: false
         show_sql: true
         generate-ddl: false
