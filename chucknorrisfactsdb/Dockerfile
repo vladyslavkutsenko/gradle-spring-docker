@@ -1,10 +1,8 @@
-FROM mysql:5.7.16
+FROM postgres:9.6
+ENV \
+   POSTGRES_DB=chuck \
+   POSTGRES_USER=chuck \
+   POSTGRES_PASSWORD=chuck
 
-MAINTAINER Johannes Unterstein <junterstein@mesosphere.io>
-
-ENV MYSQL_DATABASE=chuck \
-	MYSQL_USER=chuck \
-	MYSQL_PASSWORD=norris \
-    MYSQL_RANDOM_ROOT_PASSWORD=yes
 
 ADD init.sql /docker-entrypoint-initdb.d
