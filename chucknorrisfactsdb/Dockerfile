@@ -1,4 +1,5 @@
 FROM postgres:9.6
+EXPOSE 5432
 ENV \
    POSTGRES_DB=chuck \
    POSTGRES_USER=chuck \
