@@ -36,6 +36,7 @@ public class Joke {
 	private Long id;
 
 	@JacksonXmlProperty(isAttribute = false)
+	@Column(name = "chuck_fact")
 	private String joke;
 	@Column(name = "lang")
 	@JacksonXmlProperty(isAttribute = true)
