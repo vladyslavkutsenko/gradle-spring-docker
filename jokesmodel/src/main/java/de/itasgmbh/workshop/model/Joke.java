@@ -40,6 +40,8 @@ public class Joke {
 	@Column(name = "lang")
 	@JacksonXmlProperty(isAttribute = true)
 	private String language;
+	@JacksonXmlProperty(isAttribute = true)
+	private Integer votes;
 
 	public String getJoke() {
 		return joke;
@@ -95,6 +97,14 @@ public class Joke {
 		} else if (!language.equals(other.language))
 			return false;
 		return true;
+	}
+
+	public Integer getVotes() {
+		return votes;
+	}
+
+	public void setVotes(Integer votes) {
+		this.votes = votes;
 	}
 
 }
